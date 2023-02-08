@@ -1,0 +1,52 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:alpine
+    volumes:
+      - ./dockerConfig/postgres-init.sql:/docker-entrypoint-initdb.d/init.sql # will setup dev database adonis_app for us
+    environment:
+     POSTGRES_PASSWORD: 'test'
+     POSTGRES_USER: 'root'
+     POSTGRES_DB: 'fallback-flamant'
+    ports:
+      - '5432:5432'
+  back1:
+    restart: on-failure
+    build: ./back1
+    ports:
+      - '81:5000'
+    environment:
+      PG_HOST: 'postgres'
+      PG_PORT: '5432'
+      PG_DB_NAME: 'fallback-flamant'
+      PG_USER: 'root'
+      PG_PASSWORD: 'test'
+      restart: on-failure
+    depends_on:
+      - postgres
+
+  front:
+    restart: on-failure
+    build: ./front
+    ports:
+      - '8080:3000'
+
+  back2:
+    restart: on-failure
+    build: ./back2
+    ports:
+      - '82:5000'
+    environment:
+      DB_HOST: 'postgres'
+      DB_PORT: '5432'
+      DB_NAME: 'database'
+      DB_USER: 'root'
+      DB_PASS: 'test'
+
+  nginx:
+    build: ./nginx
+    ports:
+    - '80:80'
+    depends_on:
+    - back1
+    - back2

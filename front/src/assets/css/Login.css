@@ -1,0 +1,79 @@
+body {
+    background: rgb(0, 0, 0)!important;
+    height: fit-content;
+}
+
+.item {
+    margin-top: 7em;
+    width: 100%;
+    height: 80%;
+    display:flex; 
+    justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+}
+
+.item form {
+    display:flex; 
+    justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.item input[type=textarea], input[type=password] {
+    display: inline-block;
+    box-sizing: border-box; 
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    border: none;
+    cursor:pointer;
+    outline: solid #333;
+    color: rgb(255, 255, 255);
+    background-color: #333;
+    padding: 7.5px;
+    height: 2em;
+    margin: 1em;
+    width: 22em;
+    font-size: 1em;
+    border-radius: 2em;
+    line-height: 1em;
+    outline: 0 solid transparent;
+    box-shadow: rgb(0, 0, 0) 0 10px 20px -10px;
+    height: fit-content;
+    width: fit-content;
+    
+}
+
+  input[type=submit]  { /*second boutton*/
+    padding: 10px;
+    position: relative;
+    border: 0em solid #6246EA;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 4em;
+    margin-left: 0 !important;
+    width: 8em;
+    height: 3em;
+    background: #6246EA;
+    border-radius:2em;
+    transition: height 1.5s, width 1.5s,border 0.3s;
+    overflow: hidden;
+ 
+  }
+  
+  input[type=submit]:hover{
+    background-color: #6246EA;
+    color: #ffffff;
+  }
+
+  
+  
+  
+
+
+
+
+  
